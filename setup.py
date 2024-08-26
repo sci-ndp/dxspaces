@@ -1,6 +1,7 @@
 from setuptools import setup
 
-
+with open('requirements.txt') as f:
+    requirements = f.read().splitlines()
 
 setup(name='DXSpaces',
       version='0.0.1',
@@ -10,5 +11,6 @@ setup(name='DXSpaces',
       author='Philip Davis',
       author_email='philip.davis@sci.utah.edu',
       url='https://github.com/sci-ndp/dxspaces',
+      install_requires=requirements,
       packages=['dxspaces'],
      )
