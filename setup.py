@@ -4,7 +4,7 @@ with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
 setup(name='DXSpaces',
-      version='0.0.4',
+      version='0.0.5',
       description='Client library for RESTful DataSpaces',
       long_description="Placeholder - README Pending",
       long_description_content_type="text/x-rst",

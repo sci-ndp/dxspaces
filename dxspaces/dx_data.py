@@ -2,6 +2,7 @@ from dataclasses import dataclass
 import dill
 import json
 import numpy as np
+from pydantic import BaseModel
 import requests
 
 @dataclass
@@ -12,8 +13,7 @@ class Argument:
     ub: tuple[int, ...]
     namespace:str = None
 
-@dataclass
-class RegistryHandle:
+class RegistryHandle(BaseModel):
     namespace: str
     parameters: dict
 
