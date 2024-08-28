@@ -44,7 +44,7 @@ class DXSpacesClient:
         self.debug = debug
 
     def _req_url(self, url):
-        return(f'http://{self.socket}/{url}')
+        return(f'{self.socket}/{url}')
 
     def _do_method(self, method, url, debug_str = None, **kwargs):
         req_url = self._req_url(url)
