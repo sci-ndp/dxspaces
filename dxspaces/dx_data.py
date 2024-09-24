@@ -72,12 +72,11 @@ class DXSpacesClient:
         response = self._get(url)
         return(json.loads(response.content))
 
-    def GetNDArray(self, name, version, lb, ub, nspace = None):
+    def GetNDArray(self, name, version, lb, ub, namespace = None):
         box = _bounds_to_box(lb, ub)
         url = f'dspaces/obj/{name}/{version}/'
-        if nspace:
-            url = url + f'?namespace={nspace}'
-        print(box)
+        if namespace:
+            url = url + f'?namespace={namespace}'
         response = self._post(url, json=box)
         if response is None:
             if self.debug:
@@ -89,13 +88,13 @@ class DXSpacesClient:
         arr = np.ndarray(dims, dtype=dtype, buffer=response.content)
         return(arr)
 
-    def PutNDArray(self, arr, name, version, offset, nspace = None):
+    def PutNDArray(self, arr, name, version, offset, namespace = None):
         box = _shape_to_box(arr.shape, offset)
         data = {'box': json.dumps(box)}
         files = {'data': arr.tobytes()}
         url = f'dspaces/obj/{name}/{version}?element_size={arr.itemsize}&element_type={arr.dtype.num}'
-        if nspace:
-            url = url + f'&namespace={nspace}'
+        if namespace:
+            url = url + f'&namespace={namespace}'
         response = self._put(url, data=data, files=files)
         if response is None:
             raise RuntimeError(f'put request failed due to internal fault.')
