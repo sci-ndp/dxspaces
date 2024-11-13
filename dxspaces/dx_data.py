@@ -74,7 +74,7 @@ class DXSpacesClient:
 
     def GetNDArray(self, name, version, lb, ub, namespace = None):
         box = _bounds_to_box(lb, ub)
-        url = f'dspaces/obj/{name}/{version}/'
+        url = f'dspaces/obj/{name}/{version}'
         if namespace:
             url = url + f'?namespace={namespace}'
         response = self._post(url, json=box)
