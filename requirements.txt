@@ -1,4 +1,4 @@
 dill
-numpy
+numpy<2
 pydantic
 requests
